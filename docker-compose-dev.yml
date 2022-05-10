@@ -10,7 +10,7 @@ services:
     depends_on:
       - api
       - client
-    restart: always
+    restart: on-failure
     build:
       dockerfile: Dockerfile.dev
       context: ./nginx
@@ -24,7 +24,7 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    restart: always
+    restart: on-failure
     environment:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
